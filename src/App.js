@@ -8,6 +8,9 @@ import './App.css'
  * @type {React.FC}
  */
 export const App = () => {
+  const [imgUrl, setImgUrl] = React.useState(
+    'https://images.dog.ceo/breeds/spaniel-brittany/n02101388_6057.jpg',
+  )
   return (
     <div>
       <header>
@@ -15,7 +18,7 @@ export const App = () => {
       </header>
       <p>犬の画像を表示するサイトです。</p>
       <img
-        src="https://images.dog.ceo/breeds/spaniel-brittany/n02101388_6057.jpg"
+        src={imgUrl}
         alt="犬の画像"
       />
     </div>
