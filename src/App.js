@@ -16,19 +16,29 @@ export const App = () => {
     fetch('https://dog.ceo/api/breeds/image/random')
       .then(res => res.json())
       .then(result => setImgUrl(result.message))
-    console.log(imgUrl)
   }
 
   return (
     <div>
-      <header>
-        <h1>Dogアプリ</h1>
+      <header className="header">
+        <h1 className="header-title">Dog アプリ</h1>
       </header>
-      <p>犬の画像を表示するサイトです。</p>
-      <p>{imgUrl}</p>
-      <img src={imgUrl} alt="犬の画像" />
-      <br />
-      <button onClick={() => getImgUrl()}>更新</button>
+      <main>
+        <div className="wrapper">
+          <div className="grid-item contents__description">
+            <p>犬の画像を表示するサイトです。</p>
+          </div>
+          <div className="grid-item contents__image">
+            <img src={imgUrl} alt="犬の画像" />
+            <div className="img-action">
+              <button className="btn" onClick={() => getImgUrl()}>
+                更新
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr></hr>
+      </main>
     </div>
   )
 }

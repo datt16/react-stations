@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  margin: 0 24px;
+}
+
+.header {
+  width: 100vw;
+  padding: 0;
+  display: flex;
+  background-color: #dfdfdf;
+  justify-content: center;
+}
+
+.header h1 {
+  margin: 8px 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'description image';
+}
+
+.grid-item {
+  align-self: center;
+  justify-self: center;
+}
+
+.contents__description {
+  grid-area: description;
+}
+
+.contents__image {
+  grid-area: image;
+  object-fit: cover;
+  margin: 16px 0px;
+}
+
+.img-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 8px 36px;
+  border: unset;
+  color: white;
+  display: block;
+  background-color: #106bf3;
+}
+.btn:hover {
+  opacity: 80%;
+}
+.btn::after {
+  content: '';
+  /*絶対配置で波紋位置を決める*/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /*波紋の形状*/
+  background: radial-gradient(circle, #fff 10%, transparent 10%) no-repeat 50%;
+  transform: scale(10, 10);
+  /*はじめは透過0に*/
+  opacity: 0;
+  /*アニメーションの設定*/
+  transition: transform 0.3s, opacity 1s;
+}
+.btn:active::after {
+  transform: scale(0, 0);
+  transition: 0s;
+  opacity: 0.3;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'description'
+      'image';
+  }
+  hr {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .contents__image img {
+    height: 20em;
+    overflow: hidden;
+  }
+}
